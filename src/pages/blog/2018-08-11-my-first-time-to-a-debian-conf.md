@@ -3,6 +3,7 @@ templateKey: 'blog-post'
 title: 'My first time to a debian conf :)'
 date: 2019-08-11T03:43:01.872Z
 featuredpost: true
+featuredimage: /img/flavor_wheel.jpg
 description: >-
   Bits of my first debconf.
 tags:
