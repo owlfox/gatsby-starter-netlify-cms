@@ -1,18 +1,16 @@
 ---
-templateKey: 'blog-post'
+templateKey: blog-post
 title: 'My first time to a debian conf :)'
 date: 2019-08-11T03:43:01.872Z
+description: Bits of my first debconf.
 featuredpost: true
-featuredimage: /img/flavor_wheel.jpg
-description: >-
-  Bits of my first debconf.
+featuredimage: /img/44294676-9402b180-a2cd-11e8-92e5-b663ec097bea.jpg
 tags:
   - debconf18
   - Taiwan
   - Hsinchu
   - debian
   - videoteam
-
 ---
 
 I was so lucky to be able to attend this summer and helping the video team to accomplish some tasks!
