@@ -1,30 +1,20 @@
 ---
 templateKey: index-page
-title: IT works!
+title: Hooray~ IT works!
 image: /img/home-jumbotron.jpg
-heading: 'Oh yes,'
-subheading: Information Technology rocks!
+
+subheading: I'm a linux user who has seen two kinds of penguins in the bush!
 mainpitch:
-  title: WIP
-  description: WIP
-description: WIP
+  title: Who I am
+  description: Taiwanese, FUUUUUULstack web Developer, Web, Linux, GIS, Assembly, CS:APP, Swimming, Dogs person, trying be be a remote worker, one of the IT crowd, learning to build my own computer.
+heading: 
+description: 
 intro:
   blurbs:
     - image: /img/safari-pinned-tab.svg
-      text: WIP
-  heading: WIP
-  description: WIP
-main:
-  heading: WIP
-  description: WIP
-  image1:
-    alt: WIP
-    image: /img/safari-pinned-tab.svg
-  image2:
-    alt: WIP
-    image: /img/safari-pinned-tab.svg
-  image3:
-    alt: WIP
-    image: /img/safari-pinned-tab.svg
+      text: 
+  heading: Not sure what is this for
+  description: 
+
 ---
 

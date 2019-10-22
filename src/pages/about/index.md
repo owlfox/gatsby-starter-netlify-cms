@@ -4,7 +4,7 @@ title: Me
 ---
 Hey Thank you for visiting my site. This site is under "heavy" development. 
       Which means it might look different everytime you visit it.
-      At the moment, it is built from Gatsby.js, React and theme built by https://github.com/email2vimalraj/.
+      At the moment, it is built from Gatsby.js and netlify.
   
 I am a full-stack developer interested in every bit of computer. 
       I actually started coding in 2014 and found this fast-changing field is quite challenging and
