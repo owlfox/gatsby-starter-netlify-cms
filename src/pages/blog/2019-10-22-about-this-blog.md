@@ -7,27 +7,32 @@ featuredpost: false
 featuredimage: /img/products-grid2.jpg
 tags:
   - TODO
+  - netlify
+  - gatsby
+  - react
 ---
 ## Gatsby, React, Netlify, ...
 I tried a few static website generator like hugo, jekyll. And It turns out I have to use Gatsby since it's React friendly so makes it more extensible.
 
-I feel like I have to learn it because most of the frontend job description comes with it and I generally like the way to encapsulate code and view together and pass messages around the components. It just feels more like OOP and maybe makes it more manageable while the code base's growing.
+I feel like I have to learn React because most of the frontend job description comes with it and I generally like the way to encapsulate code and view together and pass messages around the components. It just feels more like OOP and maybe makes it more manageable while the code base's growing.
 
 Gatsby also comes with graphQL as an abstraction layer to support many different kind of data source to build the static website. For example, headless wordpress CMS, markdown files in your repo, restful api from your original site.
 
-Although I'm still not familiar with this tool, the speed of opening up static web site makes me believe it's the future of many websites.
+Although I'm still not familiar with this tool, the speed of opening up static web site makes me believe it's the future of I would like to be with.
 
 ## Netlify
 
-updating static website is a bit tedious.
+updating static website was a bit tedious.
 * modify, run local dev server check if it's ok.
 * commit the changes to git, and deploy to your hosting server.(I tried github pages, but it still requires a hook to your commit to build the site, and push to the page repo.
 
 netlify is the tool to save us from the hassles.
 * 1st it comes with cms library to allow you/your customer to modify the site easily without writing code.
 * it also monitors your git repo, build the site automatically once triggered by your push.
+* domain name service if you need
+* deploy sites on different branches automatically
 
-It saves many problems with static website generators, a great startup!
+It saves many problems with static website generators, what a great SAAS startup!
 
 
 ## TODOS:
