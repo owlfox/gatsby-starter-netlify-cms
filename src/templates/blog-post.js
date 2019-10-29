@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import { Disqus, CommentCount } from 'gatsby-plugin-disqus'
 
 export const BlogPostTemplate = ({
   content,
@@ -15,7 +16,7 @@ export const BlogPostTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content
-
+  
   return (
     <section className="section">
       {helmet || ''}
@@ -56,7 +57,6 @@ BlogPostTemplate.propTypes = {
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
-
   return (
     <Layout>
       <BlogPostTemplate
@@ -74,6 +74,11 @@ const BlogPost = ({ data }) => {
         }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+      />
+      <Disqus 
+      url={`www.owlfox.org${post.fields.slug}`}
+      identifier={post.id}
+      title={post.frontmatter.title}
       />
     </Layout>
   )
@@ -97,6 +102,9 @@ export const pageQuery = graphql`
         title
         description
         tags
+      }
+      fields {
+        slug
       }
     }
   }
