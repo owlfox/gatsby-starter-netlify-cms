@@ -1,8 +1,7 @@
 <svg version="1.1"
      baseProfile="full"
-     xmlns="http://www.w3.org/2000/svg">
-
-  <text x="50" y="25" font-size="25" rotate="5 10 -5 5 5 5" text-anchor="middle" fill="grey">OwlFox</text>
-
-
+     xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 60 30"
+     >
+<text width="60" height="30" x="20" y="25" font-size="25" rotate="5 10 -5 5 5 5" text-anchor="middle" fill="grey">OwlFox</text>
 </svg>

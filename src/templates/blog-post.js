@@ -75,7 +75,7 @@ const BlogPost = ({ data }) => {
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
       />
-      <Disqus 
+      <Disqus className='container is-fluid'
       url={`https://www.owlfox.org${post.fields.slug}`}
       identifier={post.id}
       title={post.frontmatter.title}
