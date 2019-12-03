@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: SSD筆記 - SSD結構與性能評定概述
+title: SSD筆記 - 第二篇 SSD結構與性能評定概述
 date: 2019-11-25T00:00:00.000Z
 description: 'SSD 學習筆記，翻譯與修訂自 http://codecapsule.com/2014/02/12/coding-for-ssds-part-2-architecture-of-an-ssd-and-benchmarking/'
 featuredpost: false

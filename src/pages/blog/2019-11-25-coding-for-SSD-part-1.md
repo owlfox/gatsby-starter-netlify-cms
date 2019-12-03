@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: SSD筆記 - part1 引言
+title: SSD筆記 - 第一篇 引言
 date: 2019-11-25T00:00:00.000Z
 description: 'SSD 學習筆記，翻譯與修訂自 http://codecapsule.com/2014/02/12/coding-for-ssds-part-2-architecture-of-an-ssd-and-benchmarking/'
 featuredpost: false
@@ -10,7 +10,7 @@ tags:
   - 正體中文
 ---
 # 緣由
-Emmanuel Goossaert 是 booking.com 的工程師，他因為想拿 SSD 做自己的 [key-value store](https://github.com/goossaert/kingdb) 專案的儲存方案，開始學習 SSD 相關知識。這六篇文是他在 2014 年寫下，裡面很多的參考資訊可能都找不到了，但是我剛好在準備 SSD 相關工作面試，想想還是有參考價值，所以做了簡單翻譯，跟一些筆記，再加一些[蔥](https://tw.appledaily.com/highlight/20191118/IP3YJZUFPZZDLFPUP7DYDVUAKA/)。
+Emmanuel Goossaert 是 booking.com 的工程師，他因為想拿 SSD 做自己的 [key-value store](https://github.com/goossaert/kingdb) 專案的儲存方案，開始學習 SSD 相關知識。這六篇文是他在 2014 年寫下，裡面很多的參考資訊可能都找不到了，但是我剛好在準備 SSD 相關工作面試，想想還是有參考價值，所以做了簡單翻譯，跟一些筆記，再加一些[蔥](https://tw.appledaily.com/highlight/20191118/IP3YJZUFPZZDLFPUP7DYDVUAKA/)(個人意見)。
 
 > 蔥長這樣
 
@@ -30,8 +30,10 @@ Emmanuel Goossaert 是 booking.com 的工程師，他因為想拿 SSD 做自己�
 就目前我的認知，需要做到對效能斤斤計較又很重要的系統瓶頸在 File system，需要對 SSD 特性客製化應用層程式的機會很小。
 解決方案？選個好檔案系統？ 
 ## zfs
-http://www.brendangregg.com/blog/2008-07-22/zfs-l2arc.html 裡面提到的檔案系統階層可能已經很好的解決效能問題，還送 copy-on-write，容錯機制，snapshot。
+ zfs既有的檔案系統階層在效能上可能已經很優秀了，還送 copy-on-write，容錯機制，snapshot。
+
 ![](http://www.brendangregg.com/blog/images/2008/computer_model3.png)
+http://www.brendangregg.com/blog/2008-07-22/zfs-l2arc.html
 
 zfs 也開始可以在 linux 上面使用，Ubuntu 19.10 也有直接把 zfs 裝成 roo FS 的選項。
 如果是一般 server、文書、遊戲使用我會以後裝個 zfs 就好了。
