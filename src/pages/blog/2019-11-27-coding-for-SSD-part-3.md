@@ -1,12 +1,12 @@
 ---
 templateKey: blog-post
-title: SSD筆記 - 第三篇 FTL,GC, ...etc
+title: SSD筆記 - 第三篇 FTL, GC
 date: 2019-11-27T00:00:00.000Z
 description: SSD 學習筆記，翻譯與修訂自 http://codecapsule.com/2014/02/12/coding-for-ssds-part-6-a-summary-what-every-programmer-should-know-about-solid-state-drives/
 featuredpost: false
-featuredimage: /img/products-grid2.jpg
+featuredimage: /img/bossybeddy.png
 tags:
-  - SSD
+  - coding for SSD
   - 正體中文
   - FTL
   - GC
@@ -79,25 +79,36 @@ controller 工作其一就是把 host interface 的 logical block address 轉phy
 log-block 在我們剛好寫入完整的 block 的時候也可以直接省去跟 data block
 合併的功夫，直接更改 data-block mapping table 的 metadata，並把原有的 data block 清空，更新為 log block。這類最佳化手段也稱為 switch-merge, swap-merge。
 
-目前對 log-block 的研究很多：FAST (Fully Associative Sector Translation), superblock mapping, flexible group mapping [[10]](#ref)
+目前對 log-block 的研究很多：FAST (Fully Associative Sector Translation), superblock mapping, flexible group mapping [[10]](#ref)。其他的 mapping 手法也有如 Mitsubishi algorithm, SSR [[9]](#ref)。
+
+> 這類 hybrid log-block 的作法，作者說很像 [log-sructured](https://en.wikipedia.org/wiki/Log-structured_file_system) 檔案系統，一個例子是 zfs。 自從 proxmox ve 開始接觸 zfs ，覺得他真的很好用... 從 ubuntu 19.10 開始可以直接把 rootfs 用 zfs 裝喔。
+
+# 4.3 2014 業界狀況
+
+當時 wikipedia 有 70 間 SSD 廠商， 11 間有能力做 controller， 其中4 間有自有品牌（Intel, Samsung, ...)，另外 7 間專做 controller 的公司佔了 90% 的市場銷量[[64, 65]](#ref)。
+
+> wiki 上 2019 年變成 12 家，而自有品牌的有 5 間 WD、Toshiba、Samsung、Intel、威盛電子。
+> 台灣的 controller 廠商有 phison, slicon motion, VIA tech, realtek, jmicron
+
+作者不確定是哪幾間公司吃下這個市場，但他以 Pareto（80/20） 法則猜應該是其中的兩三家，所以從除了自有品牌的 SSD，用同一個 controller 大概行為都會差不多。FTL 的實作對效能影響甚鉅，但是各家廠商也不會公開自己用了哪些方法實作。
+
+作者對於了解或是逆向工程[[3]](#ref) mapping schema 的實作對提升應用層程式的效能保持保留態度。畢竟市面上的 controller 廠商大多沒有開放實作細節，就算針對某個 policy 去調整程式設定更甚至你拿到原始碼，這套系統在其他 schema 或是其他廠牌下也不一定有更好的結果。唯一的例外可能是你在開發嵌入式系統，已經確定會用某廠商的晶片。
+
+作者建議大抵上知道許多的 controller FTL 是實作 hybrid log block policy 就好了。然後盡量一次寫入至少一個 block size 的資料，通常會得到較好的結果。
 
 
-作者對於了解或是逆向工程 mapping 的實作對提升應用層程式的效能保持保留態度。畢竟市面上的 controller 廠商大多沒有開放實作細節，就算針對某個 policy 去調整程式碼，在其他 policy 或是其他廠牌下也不一定有更好的結果。
+## 4.4 Garbage Collection
 
-大抵上知道許多的 controller FTL 是實作 hybrid log block policy 就好了。然後盡量一次寫入大於 block size 的資料，通常會得到較好的結果。
+因為將 page 清為 free 的抹除(erase)指令 latency 較高(1500-3500 μs, 寫入 250-1500 μs)，大部分的 controller 會在閒暇時做 housekeeping，讓之後寫入作業變快[[1]](#ref)，也有一些實作是在寫入時平行進行[[13]](#ref)。
 
-## GC
-因為將 page 清為 free 的抹除(erase)指令 latency 較高，大部分的 controller 會在閒暇時做 housekeeping，讓之後寫入作業變快，也有一些實作是在寫入時平行進行。
+時常會遇到 foregound 頻繁小檔寫入影響 background，導致找不到時間做  GC 的情況。這時候TRIM command, over-provisioning 可以幫得上忙（下一篇會介紹）。
 
-時常會遇到頻繁小檔寫入沒時間做 GC 的情況，這時候TRIM command, over-provisioning 可以幫得上忙。
+flash 還有一個特性是 read disturb，常讀一個 block 的資料會造成 flash 狀態改變，所以讀了一定次數以後也需要搬動 block [[14]](#ref)
 
-還有一個 GC 要做的是有些資料常改，有些資料常讀，為了 wear leveling, 時常會需要把資料搬來搬起的，所以建議還是讀寫分離，讓 GC 好做事。
+另外當一個 page 裡面有不常改的 cold/static data 及 hot/dynamic data，hot data 的更動會讓他們一起被搬動，分開冷熱資料可以改善這類情況。（不過冷的資料放久了還是會因 wear leveling 被動）。 另外也因為資料冷熱是應用層的事，SSD 不會知道，改善 SSD 效能的一個方法便是冷熱分開在不同的 page裡，讓 GC 好做事。
 
+作者也建議 “非常熱” 的資料可以先 cache 起來再寫到硬碟。以及當有資料不再被需要、或是需要刪除的時候可以批次進行，這讓 GC 可以一次得到比較多的空間操作，降低空間碎片化。
 
-
-* 寫以 page 為單位，管你是要寫個 byte 還是寫個 64 bit integer 都是一樣 XD。
-* page 不能直接複寫，要走 copy-modify-write 的流程，沒有 in-place update 這種事情。
-* SSD 只透過 GC 來清除 stale 的 block，使用者不會實際參與到移除實體資料這件事。
 > 所以很多人提倡電腦換了要把硬碟丟到調理機裡面，這點在 SSD 也不例外 XD
 
 # ref

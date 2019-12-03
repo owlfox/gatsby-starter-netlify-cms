@@ -1,0 +1,26 @@
+zrc@zrc-LIFEBOOK-LH532:~$ zfs list
+NAME                                               USED  AVAIL     REFER  MOUNTPOINT
+bpool                                              130M  1.62G      176K  /boot
+bpool/BOOT                                         130M  1.62G      176K  none
+bpool/BOOT/ubuntu_zf8cmm                           129M  1.62G      129M  /boot
+rpool                                             3.64G   208G       96K  /
+rpool/ROOT                                        3.56G   208G       96K  none
+rpool/ROOT/ubuntu_zf8cmm                          3.56G   208G     2.77G  /
+rpool/ROOT/ubuntu_zf8cmm/srv                        96K   208G       96K  /srv
+rpool/ROOT/ubuntu_zf8cmm/usr                       208K   208G       96K  /usr
+rpool/ROOT/ubuntu_zf8cmm/usr/local                 112K   208G      112K  /usr/local
+rpool/ROOT/ubuntu_zf8cmm/var                       809M   208G       96K  /var
+rpool/ROOT/ubuntu_zf8cmm/var/games                  96K   208G       96K  /var/games
+rpool/ROOT/ubuntu_zf8cmm/var/lib                   804M   208G      697M  /var/lib
+rpool/ROOT/ubuntu_zf8cmm/var/lib/AccountServices    96K   208G       96K  /var/lib/AccountServices
+rpool/ROOT/ubuntu_zf8cmm/var/lib/NetworkManager    152K   208G      152K  /var/lib/NetworkManager
+rpool/ROOT/ubuntu_zf8cmm/var/lib/apt              74.4M   208G     74.4M  /var/lib/apt
+rpool/ROOT/ubuntu_zf8cmm/var/lib/dpkg             32.6M   208G     32.6M  /var/lib/dpkg
+rpool/ROOT/ubuntu_zf8cmm/var/log                  4.44M   208G     4.44M  /var/log
+rpool/ROOT/ubuntu_zf8cmm/var/mail                   96K   208G       96K  /var/mail
+rpool/ROOT/ubuntu_zf8cmm/var/snap                  128K   208G      128K  /var/snap
+rpool/ROOT/ubuntu_zf8cmm/var/spool                 112K   208G      112K  /var/spool
+rpool/ROOT/ubuntu_zf8cmm/var/www                    96K   208G       96K  /var/www
+rpool/USERDATA                                    77.5M   208G       96K  /
+rpool/USERDATA/root_c3pgjn                         112K   208G      112K  /root
+rpool/USERDATA/zrc_c3pgjn                         77.3M   208G     77.3M  /home/zrc

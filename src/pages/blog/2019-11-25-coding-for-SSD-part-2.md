@@ -1,16 +1,16 @@
 ---
 templateKey: blog-post
-title: SSD筆記 - SSD結構與性能評定
+title: SSD筆記 - SSD結構與性能評定概述
 date: 2019-11-25T00:00:00.000Z
 description: 'SSD 學習筆記，翻譯與修訂自 http://codecapsule.com/2014/02/12/coding-for-ssds-part-2-architecture-of-an-ssd-and-benchmarking/'
 featuredpost: false
-featuredimage: /img/products-grid2.jpg
+featuredimage: /img/bossybeddy.png
 tags:
-  - SSD
+  - coding for SSD
   - 正體中文
 ---
 # 緣由
-這是我閱讀 Emmanuel Goossaert 撰寫的 coding for ssd 系列文章所做的筆記，基本上有按照他的文章架構，再加一些[蔥](https://tw.appledaily.com/highlight/20191118/IP3YJZUFPZZDLFPUP7DYDVUAKA/)。原文請參考 [1](#coding for ssd part2)
+
 
 這篇主要談論 Nand flash 的不同 cell type，基本的 SSD 系統架構，及如何做 SSD 效能評定（Benchmarking）。作者是在 booking.com 上班的軟體工程師。有用過應該就知道這是很大的旅遊訂房行程規劃服務網站，在這類工作環境可能需要對底層的效能有深入解快，才能解決工作上的實務問題。我覺得這類軟體從業人員提供的觀點對自己來說幫助很大，所以翻譯/兼做做筆記。
 
