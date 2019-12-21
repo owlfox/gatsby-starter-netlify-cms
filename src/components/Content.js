@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import 'katex/dist/katex.min.css' 
 import './postcontent.sass'
+
 
 export const HTMLContent = ({ content, className }) => {
   const defaults = `is-large`
