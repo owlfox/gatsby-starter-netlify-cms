@@ -45,6 +45,10 @@ It saves many problems with static website generators, what a great SAAS startup
 
 I would like to help on i18n and mobile editor experience on netlify cms interface if I could.
 
+## Features?
+
+1. mathjax/[katex](https://katex.org/) $c = \pm\sqrt{a^2 + b^2}$
+
 ## TODOS:
 
 I will continue improving this site, here is a list of what i'm doing
