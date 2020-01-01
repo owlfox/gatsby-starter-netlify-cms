@@ -1,0 +1,1 @@
+du -d1 -h | sort -rh | head -10

@@ -1,14 +1,14 @@
 ---
 templateKey: blog-post
 title: Better embedded software ch12 notes 
-date: 2019-12-23T00:00:00.000Z
+date: 2019-12-31T00:00:00.000Z
 description: study note
 featuredpost: false
 featuredimage: /img/bossybeddy.png
 tags:
-  - embedded
+  - better embedded
 ---
-Chapter 20 軟體設計
+Chapter 12 軟體設計
 ===
 ###### tags: `mutex`, `concurrency`, `better-embedded`
 > 這裡是對CMU的Philip Koopman教授的著作 [Better Embedded System Software](https://www.amazon.com/Better-Embedded-System-Software-Koopman/dp/0984449000) 20章 做的翻譯練習。
