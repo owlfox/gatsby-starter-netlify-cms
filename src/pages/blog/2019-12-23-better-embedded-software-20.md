@@ -245,6 +245,7 @@ volatile unsigned short int SharedDataMute = UNLOCKED;
 ```
 共享的資料和 mutex 都應該只能被需要用到的軟體模組存取。他們常常會被設計成全域變數，但那並非唯一的解決方案。在 C++ 你可以透過物件來包裝共享資源及透過 method 來包裝存取 mutex object 的程式。（參考第 19 章 邪惡的全域變數)
 當系統開始運作，mutex 為 0，代表解鎖。當一個 task 想要取得所有權，可能會有兩種共享情境：一是該資源已經有人在用，二是其他 task 也想取得所有權。當多個 task 競爭同個資源的時候，可能會在取得資源過程中發生 task switch ，造成兩個 task 都誤以為取得所有權的誤判情形。這個問題可以透過以下稱為 spinlock 的實作來排除（又稱 test and set lock）：
+```
 // 試圖鎖定資源
 void GetMutex(volatile unsigned short int * Mutex) {
   unsigned short int InitalValue;
@@ -267,7 +268,7 @@ void ReleaseMutex(volatile unsigned short int *Mutex) {
 GetMutex(&SharedDataMutex);
 
 //拿到 mutex 以後我們就可以為所欲為！
-```
+
 ReleaseMutex(&SharedDataMutex);
 //現在其他人也可以使用該資料
 ```
