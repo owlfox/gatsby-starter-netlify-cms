@@ -13,8 +13,8 @@ Chapter 20 Mutexes and Data Access Concurrency
 ###### tags: `mutex`, `concurrency`, `better-embedded`
 > 這裡是對CMU的Philip Koopman教授的著作 [Better Embedded System Software](https://www.amazon.com/Better-Embedded-System-Software-Koopman/dp/0984449000) 20章 做的翻譯練習。
 關於 C 語言提供的 atomic 操作支援或許可以看看:
-* https://en.cppreference.com/w/c/atomic
-* modern C 最後一章 https://gustedt.wordpress.com/2019/09/18/modern-c-second-edition/
+> * https://en.cppreference.com/w/c/atomic
+> * modern C 最後一章 https://gustedt.wordpress.com/2019/09/18/modern-c-second-edition/
 
 重點提示
 * 各 tasks 共享的變數必須要有保護並行(concurrency)操作的機制來避免臭蟲/bug。
@@ -29,7 +29,7 @@ Chapter 20 Mutexes and Data Access Concurrency
 * 20.3 資料保護策略
 所有被多項作業 task (包含 ISR ) 共享的資料結構都必須加上可行最輕量的並行保護（concurrency protection）。常見保護機制有：volatile(C/C++), 藉由 masking 中斷實作的 atomic 修改、queue、 double buffering, mutex
 * 20.4 Reentrant 的程式
-只用動態 allocated 的資源、讓你的程式碼能讓多個作業單元同步運行。
+只用動態 allocated 的資源、讓你的程式碼能讓多個 task 同步運行。
 * 20.5 坑/pitfall
 * 20.6 更多資訊
 也可參考 14 章 Real time / 實時系統, 19 章 邪惡的全域變數
@@ -37,11 +37,11 @@ Chapter 20 Mutexes and Data Access Concurrency
 # 20.1 前言
 定義 concurrent/並行:  
 並行者，concurrency。兩作業/操作/logical flow 於任何時間點同為 "active" 狀態即為之。
-> 即便該其一處在 暫停 / suspended 的狀態，而只有其一在運行也算。任何 B 開始作業之後 A 還沒完成他的工作的作業都算 concurrent.
+> 即便該其一處在 暫停 / suspended 的狀態，而只有其一在運行也算。任何 B 開始之後 A 還沒完成他的工作的 task 都算 concurrent.
 並行對嵌入式系統來說很常見，該系統可能一邊無盡的執行控制演算法而同時系統還是保持在正常運行狀態，絕大多數的嵌入式系統某種程度上來說都會面臨並行議題。
 
-當一筆資料或是記憶體位址在任一時間點被一嵌入式系統裡的不同作業/task共享時，問題就有可能發生。簡單來說，問題發生在於其一 task 誤以為其他 task 不會動該筆資料。換句話說，並行問題發生在兩個 task 在同一個資源/資料的使用上無法共事。特常見的案例是當 ISR 改了一個正在存取某共用資料的主要程序陣亡。因而我們必須確保資料在會被其他 task/硬體 修改的情況下，取得/寫入正確的資料。
-一般我們有兩種解法，一是上鎖或是保護該資料在不會導致系統行為異常的前提下才能被讀取、修改。其二是使用不容易受到並行問題影響的機制來做 作業/task 同步，如 queue, 讓共用的程式碼變得 reentrant。
+當一筆資料或是記憶體位址在任一時間點被一嵌入式系統裡的不同作業/task共享時，問題就有可能發生。簡單來說，問題發生在於其一 task 誤以為其他 task 不會動該筆資料。換句話說，並行問題發生在兩個 task 在同一個資源/資料的使用上無法共事。特常見的案例是當 ISR 改了一個共用資料, 導致正在存取主要程序陣亡。因而我們必須確保資料在會被其他 task/硬體 修改的情況下，取得/寫入正確的資料。
+一般我們有兩種解法，一是上鎖或是保護該資料在不會導致系統行為異常的前提下才能被讀取、修改。其二是使用不容易受到並行問題影響的機制來做 task 同步，如 queue, 讓共用的程式碼變得 reentrant 等。
 
 ## 20.1.1 使用並行資料處理技巧的重要性
 絕大多數的嵌入式系統都有並行問題。只要你開始有多個 task 從軟體系統的不同模組存取同一資料、或是使用中斷處理，你就是並行問題的高風險群。
@@ -55,7 +55,7 @@ X ISR 會更新記憶體或是變數數值，但其他使用該資料的 task �
 X 全域變數沒有上 mutex 或是其他保護機制。
 X 硬體資源沒有上 mutex 或是其他保護機制。
 X 變數會被其他 task 或是硬體變更，但存取該變數的軟體沒有強制重新載入最新數值的機制。
-X 共用的函式庫裡面用了 static 、 全域變數或 nonreentrant 的資料結構。
+X 共用的函式庫裡面用了 static 、 全域變數或 non-reentrant 的資料結構。
 
 ## 20.1.3 資料共享控管不當的風險
 * 難以重現、偶發的，可能在出貨之後才現身的臭蟲。
@@ -111,7 +111,8 @@ for(i=0; i<1000; i++) {
   data[i].time = rtn;
 }
 ```
-每一筆時間拿到的數值都一樣！而解決方案就是用 volatile 關鍵字！ 避免讓編譯器誤會，做不必要的的最佳化。
+最後每一筆時間拿到的數值都一樣！
+解決方案就是用 volatile 關鍵字！ 避免讓編譯器誤會，做不必要的的最佳化。
 
 > 這裡可以參考 CS:APP 3e 的第三章，了解 C 語言與記憶體的存取指令的關係。
 
@@ -120,7 +121,7 @@ for(i=0; i<1000; i++) {
 舉個例子，系統任一個 task 都需要寫入錯誤或是事件 log, 意味著同一時間只能有一個 task 對 log 做寫入，如果沒做好，我們就會看到一堆垃圾、莫名的 log。這類問題的行為跟我們上面提到的 Timer 問題類似，只是我們現在有了多個 writer 一起湊熱鬧。後面我們將介紹怎麼解決此類問題。
 
 # 20.3 資料保護策略
-有很多種做法，最好是挑可解決你的問題裡最清涼的那種。
+做法很多，最好是挑可解決你的問題裡最清涼的那種。
 ## 20.3.1 volatile
 ```
 volatile int X;
@@ -146,7 +147,7 @@ for(I=0; i<SampleTimes; I++>){
   //... 等一下下再取樣
 }
 ```
-1: 如果沒加 volatile, NewValue 可能從來不會被寫入新的資料。 compiler 以為這段 code 跟 while loop 結束的時候寫最後一筆就好。
+1: 如果沒加 volatile, NewValue 可能從來不會被寫入新的資料。 compiler 以為這段 code 在 while loop 結束的時候寫最後一筆就好。
 2. 如果沒加可能每個取樣拿到的數值都是一樣的， compiler 覺得奇怪，一樣的事情你幹嘛做那麼多次， NewValue 全部用在暫存器上面的數值就好了。
 
 * volitile 的缺點：
