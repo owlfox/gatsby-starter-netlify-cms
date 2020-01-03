@@ -123,15 +123,18 @@ for(i=0; i<1000; i++) {
 # 20.3 資料保護策略
 做法很多，最好是挑可解決你的問題裡最清涼的那種。
 ## 20.3.1 volatile
+
 ```
 volatile int X;
 
 y = X+X; //讀兩次 X 的數值然後加總
 ```
+
 沒加 volatile compiler 編出來的 code 可能是把 X 在暫存器裡面的東西加兩次。
 加了，很不一樣！可能 X 兩次讀出來的數值不一樣
 * 適用於有記憶體映射的 io、會被 ISR 更新的數值、記憶體位址。
 再看一個例子：
+
 ```
 volatile static int NewValue;
 
@@ -147,6 +150,7 @@ for(I=0; i<SampleTimes; I++>){
   //... 等一下下再取樣
 }
 ```
+
 1: 如果沒加 volatile, NewValue 可能從來不會被寫入新的資料。 compiler 以為這段 code 在 while loop 結束的時候寫最後一筆就好。
 2. 如果沒加可能每個取樣拿到的數值都是一樣的， compiler 覺得奇怪，一樣的事情你幹嘛做那麼多次， NewValue 全部用在暫存器上面的數值就好了。
 
@@ -263,7 +267,7 @@ void ReleaseMutex(volatile unsigned short int *Mutex) {
 GetMutex(&SharedDataMutex);
 
 //拿到 mutex 以後我們就可以為所欲為！
-...
+```
 ReleaseMutex(&SharedDataMutex);
 //現在其他人也可以使用該資料
 ```
@@ -274,7 +278,7 @@ ReleaseMutex(&SharedDataMutex);
 （說到排程，如果你是在單 CPU 的環境作業，當拿不到 mutex 的時候 使用 yield 等 syscall 來讓其他 task 可以更快完成他們的工作是個較好的做法。畢竟當同一時間只有一個 task 可以運行的時候，一直重新試著去解鎖是沒有意義的。）
 mutex 同時也是很多經典同步問題的發生原因：
 * Priority inversion: 重要的 task 需要等 較無關緊要的 task 解鎖才能拿到 mutex。這在 queue 裡面也會遇到，例如 queue 滿的時候要等，但是一般來說 mutex 的情況會比較難除錯。
-* Deadlock: 當兩個 task 手裡都有對方想要的資源的時候發生。除非有特別設計排除機制，他們兩會一直等下去...
+* Deadlock: 當兩個 task 手裡都有對方想要的資源的時候發生。除非有特別設計排除機制，他們兩會一直等下去.
 
 # 20.4 Reentrant code
 當我們可以讓多於一個 task 使用一個程式模組而不會有並行錯誤，我們稱其 reentrant [可再入](http://terms.naer.edu.tw/detail/2415749/?index=4)。此類程式碼常見於數學函式庫、I/O 驅動，錯誤處理/error handler. 通常此類特性可藉由只使用 stack 或是暫存器來管理變數達成。 C 的話就是不要用可惡的全域變數、 static keyword, 確定沒有指針指到共用的記憶體位置。
