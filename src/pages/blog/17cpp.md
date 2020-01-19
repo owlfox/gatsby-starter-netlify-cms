@@ -12,28 +12,68 @@ tags:
 
 希望這幾天可以涵蓋到以下內容：
 * Tour of c++, all
-* cmake, catch2
+* cmake, catch2, boost
 * tmux + vim + relevant plugins
-
+* hackerrank 練手感
 然後下次面試表現得好一些！
 * 了解一下系統開發重點- better embedded system software
 * 想做這份工作的動機
 
+
+
+
+# basics
+## ways to iterate
+* all_of
+* range_for
+* iterator
+* c style for
+
+# struct/class
+## struct
+跟 C 差不多
+## class
+提供更複雜的物件封裝
+* private/public
+
+## unique_, shared_, weak_, null_ptr
+
+
+## new, delete
+
+## copy, move, ... etc
+=delete, delete the init way provided
+class A {
+  public:
+  A(const A&) =delete;
+  A& operator=(const A&) =delete;
+}
+=default,
+=0, pure virtual, interfaces to be implemented
+
+explicit for type conversion, initilization
+
 # 編譯加測試
 ## catch2 + cmake
 
+# C++17
+## better auto
 
-
-# better auto
+# lib
+## boost
+`apt install libboost-all-dev`
 ```
 #include <initializer_list>
 auto intValues = {1, 2, 3};
 auto doubleValues = {1.1, 2.2, 3.3};
 ```
 
-# nested namespace
+
+
+## nested namespace
 
 # ref
 1. tour of c++
 2. c++ a crash course
 3. Getting started with C++17
+
