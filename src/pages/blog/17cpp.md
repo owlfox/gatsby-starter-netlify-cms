@@ -14,12 +14,18 @@ tags:
 * Tour of c++, all
 * cmake, catch2, boost
 * tmux + vim + relevant plugins
-* hackerrank 練手感
+* hackerrank/leetcode/codewars/codingame/寫遊戲 練手感
 然後下次面試表現得好一些！
 * 了解一下系統開發重點- better embedded system software
-* 想做這份工作的動機
+* 想做這份工作的動機?
 
+# best practices
+正確姿勢： Cpp core [guidelines](https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md)
 
+## c++ good at
+1. energy efficient, good response time
+2. a lot of features.. generic code to bit manupluation
+3. user defined types <-> classes(from simula) to allow you build on your own types/abstractions.
 
 
 # basics
@@ -28,6 +34,18 @@ tags:
 * range_for
 * iterator
 * c style for
+
+# algorithm
+## max of a vector with lambda, [ref](http://www.cplusplus.com/reference/algorithm/max_element/)
+```
+#include <algorighm>
+#include <vector>
+int max_of_four(int a, int b, int c, int d) {
+    vector<int> nums{a,b,c,d};
+    return *max_element(nums.begin(), nums.end(), [](auto i, auto j) {return i<j;});
+}
+```
+
 
 # struct/class
 ## struct
@@ -73,7 +91,14 @@ auto doubleValues = {1.1, 2.2, 3.3};
 ## nested namespace
 
 # ref
-1. tour of c++
-2. c++ a crash course
-3. Getting started with C++17
+參考書籍：
+* c++ father, tour of c++
+兩百頁講完 C++17 還有可能出現的新 C++20 concepts .., 範例少了一點
+* c++ a crash course
+* hands on system programming with c++
+* Sanjay Madhay, Game programming in C++ 
 
+
+線上課程：
+* c++ course on [Udacity](https://classroom.udacity.com/courses/ud210), I don't like it this much.. but you can find c++ fater here talking about some concepts and history.
+* Getting started with C++17
