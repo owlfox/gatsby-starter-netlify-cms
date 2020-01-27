@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: notes of Foundamentals of Data Structure in C++ 2nd
+title: data structures and algorithms with C++s
 date: 2020-01-19T00:00:00.000Z
 description: notes 
 featuredpost: false
@@ -15,7 +15,8 @@ tags:
 # ADT
 用來寫物件導向程式的文件手法之一？
 
-# 
+# Ref
+Foundamentals of Data Structure in C++ 2nd 
 
 
 http://ocw.aca.ntu.edu.tw/ntu-ocw/ocw/cou/101S210

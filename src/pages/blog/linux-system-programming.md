@@ -46,3 +46,14 @@ what is C library
 
 ## RAII
 ## GSL
+
+# vim 
+array[0] = 0;
+array[0] = 0;
+array[0] = 0;
+array[0] = 0;
+array[0] = 0;
+
+## kernel development?
+https://github.com/cirosantilli/linux-kernel-module-cheat/tree/82fab09e1ec0e9b1931eba81f2974b8c8c7b41b9#9p
+
