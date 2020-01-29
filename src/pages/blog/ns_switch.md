@@ -8,11 +8,17 @@ featuredimage: /img/seuss-highres.jpg
 tags:
   - ns switch
 ---
+# how-to
 * first get a hackble nswtich
 * prepare your SD
-* https://switch.homebrew.guide/hacking/fuseegelee/sdsetup
+https://switch.homebrew.guide/hacking/fuseegelee/sdsetup
+* 
+
+# upgrade system firmware
+https://switch.homebrew.guide/usingcfw/manualupgrade
 
 # ISSUES
 * macosx ruined file system
 sudo chflags -R arch /Volumes/UNTITLED
-* patch
+* sigpatch
+
