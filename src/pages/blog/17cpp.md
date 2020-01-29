@@ -1,7 +1,7 @@
 ---
 templateKey: blog-post
 title: notes of C++17
-date: 2020-01-07T00:00:00.000Z
+date: 2020-01-01T00:00:00.000Z
 description: notes 
 featuredpost: false
 featuredimage: /img/bossybeddy.png
