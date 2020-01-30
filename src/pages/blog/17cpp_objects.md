@@ -115,5 +115,15 @@ return vec; // move vec out of init()
 auto v = init(1'000'000); // star t hear tbeat and initialize v
 ```
 
+
+# RAII
+在定義各個物件的 owner 之後，C++ 在物件脫離可用 scope 之後機會自動釋放資源，並有跟例外處理機制結合。
+memory (string, vector, map, unordered_map, etc.), files (ifstream, ofstream, etc.), threads (thread), locks (lock_guard, unique_lock, etc.), and general objects (through unique_ptr and shared_ptr).
+都是透過 RAII 包裝成好用物件的範例。
+
+
+# Questions
+1. 作者提到分散式系統愈來愈多、 locality 重要性與日俱增，最好別依賴 GC 是什麼意思？
+目前看起來的感覺是 lock, file handle 等各類資源最好都要有效的釋放，才不會造成系統反應變慢。
 # ref
 A tour of C++
