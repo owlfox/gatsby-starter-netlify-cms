@@ -10,9 +10,12 @@ tags:
 ---
 
 # Objects
+
 Object can be 
 * primitive type, int, char, float, ... 
 * user defined class, struct
+
+# lifes of objects
 
 如果物件的資源複製/移動、取得/釋放資源涉及 new/delete 的呼叫，則可能用 constructor, deconstructor 管理較佳。
 ```
