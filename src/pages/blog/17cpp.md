@@ -24,10 +24,40 @@ In mandarin， 1(yi)7(qi) sounds similiar to together,  lets do c++ together！�
 2. 主要目標是讓自己成為更好的 Linux system programmer, 並幫助未來失憶的自己、或是其他人。
 
 # 目錄
-## 
+## Basics
 * C++ 是在哈囉 with conan, cmake, catch2
-
+* Declaration, Definition, headers, implementations
+* Statement expression, if, for, switch, try/catch
+* integer, floating number, built-in array
+* API, header, implementation
+* const, static, explicit function, &&?
+ 
 ## 物件，不是買房子的那個物件。
+* class, struct, some patterns
+* RAII, unique/shared/weak_ptr, std::move, ownership?
+* Explicit implicit
+* ways of initialization
+* virtual
+
+## template
+
+## 物件道
+* singleton
+* forward declartion
+* preprocessor directives
+
+
+
+
+## 好用工具
+* catch2
+* boost
+* poco
+
+## 管理
+* conan
+
+
 
 # C++ 學習資源 /  參考資料
 * 文章架構想參考[良葛格](https://openhome.cc/Gossip/CppGossip/index.html)的方法, 慢慢把個別主題的資訊整理出來。
