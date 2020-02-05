@@ -12,7 +12,7 @@ tags:
 * first get a hackble nswtich
 * prepare your SD
 https://switch.homebrew.guide/hacking/fuseegelee/sdsetup
-* 
+
 
 # upgrade system firmware
 https://switch.homebrew.guide/usingcfw/manualupgrade
@@ -21,4 +21,4 @@ https://switch.homebrew.guide/usingcfw/manualupgrade
 * macosx ruined file system
 sudo chflags -R arch /Volumes/UNTITLED
 * sigpatch
-
+https://nxhax.com/Thread-Invalid-NCA-Might-mean-missing-sigpatches-or-a-too-low-firmware-Solution

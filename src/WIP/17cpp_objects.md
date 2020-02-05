@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: notes of C++17
+title: notes of C++ objects
 date: 2020-01-27T00:00:00.000Z
 description: notes 
 featuredpost: false
@@ -8,14 +8,22 @@ featuredimage: /img/bossybeddy.png
 tags:
   - c++
 ---
+# what's covered in this post
+* [static](#static)
+* [explicit](#explicit)
+* class/struct
+* this
+* const
+* 
 
 # Objects
-
 Object can be 
 * primitive type, int, char, float, ... 
 * user defined class, struct
 
-# lifes of objects
+
+
+# lifecycle of objects
 
 如果物件的資源複製/移動、取得/釋放資源涉及 new/delete 的呼叫，則可能用 constructor, deconstructor 管理較佳。
 ```
@@ -117,6 +125,8 @@ return vec; // move vec out of init()
 }
 auto v = init(1'000'000); // star t hear tbeat and initialize v
 ```
+
+# default constructor, assign operator
 
 
 # RAII
