@@ -1,6 +1,6 @@
 ---
 templateKey: blog-post
-title: notes of 
+title: distributed system notes
 date: 2020-01-21T00:00:00.000Z
 description: notes 
 featuredpost: false

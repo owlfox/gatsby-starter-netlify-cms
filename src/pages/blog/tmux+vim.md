@@ -25,11 +25,22 @@ https://stackoverflow.com/questions/1620018/copy-all-the-lines-to-clipboard
 HLM
 [Control][b] - Move back one full screen
 [Control][f] - Move forward one full screen
+up down
 [Control][d] - Move forward 1/2 screen
 [Control][u] - Move back (up) 1/2 screen
 
-## vundle
+change stuff in matching brackets, quotes, ...
+ci', change everyting "in" ''
+ca[, change things around [], [] will also be changed
+% to jump between matching marks
+
+J to Join this and the next line
+zsh:1: command not found: ++enc=utf8
+## vundle, plugins
 [remove plugin](https://github.com/VundleVim/Vundle.vim/issues/733)
+* easymotion
+* ycm
+* 
 
 # tmux
 把 pane 彈出到獨立 window

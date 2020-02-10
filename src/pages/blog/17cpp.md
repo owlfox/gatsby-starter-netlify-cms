@@ -1,19 +1,18 @@
 ---
 templateKey: blog-post
-title: notes of C++17
-date: 2020-01-01T00:00:00.000Z
-description: notes 
+title: 17cpp, 一起C++
+date: 2030-01-01T00:00:00.000Z
+description: My list of c++ system programming notes
 featuredpost: false
 featuredimage: /img/bossybeddy.png
 tags:
   - c++
----
-# 17cpp
+
 In mandarin， 1(yi)7(qi) sounds similiar to together,  lets do c++ together！！
 此系列文章跟 17 公司沒有任何關係，單純紀錄學習 C++17 XD 
 
 * 我的背景
-1. 曾經維護過有點古老，基於 ACE framework + MFC 的 C++ 網路程式。
+1. 曾經維護過有點古老，基於 ACE framework + MFC 的 C++ 網路程式。(那時候真的不知道自己在幹麻)
 2. 學了一點 C 語言（從 jserv 的線上/下課程），了解基礎的 Linux 系統及網路管理。
 3. 讀過 CSAPP 3e，大概知道 C 語言與 X86_64, system programming 的距離。
 
@@ -31,6 +30,8 @@ In mandarin， 1(yi)7(qi) sounds similiar to together,  lets do c++ together！�
 * integer, floating number, built-in array
 * API, header, implementation
 * const, static, explicit function, &&?
+* different ways of casting
+* const correctness, [C](https://stackoverflow.com/questions/21476869/constant-pointer-vs-pointer-to-constant/21476937)
  
 ## 物件，不是買房子的那個物件。
 * class, struct, some patterns
@@ -47,14 +48,17 @@ In mandarin， 1(yi)7(qi) sounds similiar to together,  lets do c++ together！�
 * preprocessor directives
 
 
-
+# 演算法
+* trees(3 orders) + RAII + smart_ptr
+* stack/queue
+* graph
 
 ## 好用工具
 * catch2
 * boost
 * poco
 
-## 管理
+## 管理/CI
 * conan
 
 
@@ -63,6 +67,7 @@ In mandarin， 1(yi)7(qi) sounds similiar to together,  lets do c++ together！�
 * 文章架構想參考[良葛格](https://openhome.cc/Gossip/CppGossip/index.html)的方法, 慢慢把個別主題的資訊整理出來。
 cppcast
 cppconf
+* https://thispointer.com/shared_ptr-binary-trees-and-the-problem-of-cyclic-references/
 
 ## C++
 * A tour of C++ 2e

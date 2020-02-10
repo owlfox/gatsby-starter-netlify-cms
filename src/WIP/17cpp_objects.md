@@ -8,6 +8,8 @@ featuredimage: /img/bossybeddy.png
 tags:
   - c++
 ---
+除了 int, float
+
 # what's covered in this post
 * [static](#static)
 * [explicit](#explicit)
@@ -114,19 +116,15 @@ Vector::Vector(Vector&& a)
 }
 ```
 
-std::vector<thread> my_threads;
-Vector init(int n) {
-thread t {heartbeat}; // run heartbeat concurrently (in a separate thread) my_threads.push_back(std::move(t)); //movetintomy_threads(§13.2.2)
-// ... more initialization ...
-Vector vec(n);
-for (int i=0; i!=vec.size(); ++i)
-vec[i] = 777;
-return vec; // move vec out of init()
-}
-auto v = init(1'000'000); // star t hear tbeat and initialize v
-```
+# const
+很多種用法
+1. const variable/member
+2. const function return
+3. const member function  宣告不會修改成員變數
 
 # default constructor, assign operator
+大多數非 resource habdle 的物件 是 copy reference
+如果我們希望定義除不同的行為，則需要另外提供不同的 = 或是 constructor
 
 
 # RAII
