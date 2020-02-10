@@ -7,7 +7,7 @@ featuredpost: false
 featuredimage: /img/bossybeddy.png
 tags:
   - c++
-
+---
 In mandarin， 1(yi)7(qi) sounds similiar to together,  lets do c++ together！！
 此系列文章跟 17 公司沒有任何關係，單純紀錄學習 C++17 XD 
 
