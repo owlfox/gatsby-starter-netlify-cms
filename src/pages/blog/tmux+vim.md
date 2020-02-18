@@ -20,11 +20,20 @@ with netrw
 ## scripting
 ## configs
 
+# moves
+
+zz to center your page
+
+## jump
+<C-i> <C-o> to jump back & forward
+
 ## panes
 <C-wv>, vertical split
 <C-wh/j/k/l> move around panes
 * shell cmd in vim
 :! cmd ...
+
+
 
 * turn on/off line number
 :set number

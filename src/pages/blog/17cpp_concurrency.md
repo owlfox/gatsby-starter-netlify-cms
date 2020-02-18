@@ -1,7 +1,7 @@
 ---
 templateKey: blog-post
 title: consumer, producer 
-date: 2030-01-01T00:00:00.000Z
+date: 2020-02-01T00:00:00.000Z
 description: c++ system programming notes
 featuredpost: false
 featuredimage: /img/bossybeddy.png
