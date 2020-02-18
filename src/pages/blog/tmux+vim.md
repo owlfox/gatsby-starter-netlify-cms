@@ -11,6 +11,18 @@ tags:
 ---
 
 # Vim
+## files
+with netrw
+
+* ref 
+[guide](https://shapeshed.com/vim-netrw/)
+## dot command
+## scripting
+## configs
+
+## panes
+<C-wv>, vertical split
+<C-wh/j/k/l> move around panes
 * shell cmd in vim
 :! cmd ...
 

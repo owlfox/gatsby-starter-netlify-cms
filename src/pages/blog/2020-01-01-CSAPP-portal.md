@@ -7,6 +7,7 @@ featuredpost: false
 featuredimage: /img/bossybeddy.png
 tags:
   - book notes
+  - csapp3e
 ---
 Notes of book reading... 
 

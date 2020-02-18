@@ -39,6 +39,8 @@ In mandarin， 1(yi)7(qi) sounds similiar to together,  lets do c++ together！�
 * Explicit implicit
 * ways of initialization
 * virtual
+* auto
+* noexcept
 
 ## template
 
