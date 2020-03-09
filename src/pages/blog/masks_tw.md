@@ -8,7 +8,6 @@ featuredimage: /img/bossybeddy.png
 tags:
   - information
 ---
-[English Version](#English version)
 2020-03-06 起台灣政府推動口罩實名制政策，因為規則常改，網路上的新聞出現“其餘規則不變”讓我這個記性不好的人很困擾（想不起來其餘規則是啥），於是來整理這篇。
 
 Changelog:
