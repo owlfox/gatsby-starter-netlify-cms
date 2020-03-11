@@ -1,7 +1,7 @@
 ---
 templateKey: blog-post
 title: 般若波羅蜜多心經 ｜ Heart Sutra
-date: 2030-03-09T00:00:00.000Z
+date: 2020-03-09T00:00:00.000Z
 description: 如題
 featuredpost: false
 featuredimage: /img/bossybeddy.png
