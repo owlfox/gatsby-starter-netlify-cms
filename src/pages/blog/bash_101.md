@@ -40,13 +40,14 @@ echo $@
 The line started with # means it's a comment. while `#! something` is a special comment about which command to execute this script. we may assign a value/string to a variable and then interpolate it into other commands. 
 If you need results from other commands use $+parentheses. Here $@ is a special variable stores all the variables given while executing this script. Try `./test.sh 1 2 3` and you will see how.
 > click to see details of [special characters](https://www.tldp.org/LDP/abs/html/special-chars.html)
+ 
 
-
-# TODOS
-1. implement ls in Rust
-2. a bash function to run commands until it succeed
-3. and other homeworks in reference
-
+# my solutions to the exercises
+1. `ls -alht` to list files in directory, h for hex in file size, a for hidden files, l to list details, t to sort by recency
+2. https://github.com/owlfox/missing_semester/blob/master/ls_marco_polo.sh 
+3. https://github.com/owlfox/missing_semester/blob/master/until_success.sh
+4. `find . -name "*.html" -print0 | xargs -0 zip a.zip`
+5. `ls -ltrh`
 
 # Reference
 [1] Missing sementer [shell](https://missing.csail.mit.edu/2020/course-shell/), [shell
