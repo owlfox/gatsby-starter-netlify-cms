@@ -47,7 +47,7 @@ If you need results from other commands use $+parentheses. Here $@ is a special 
 2. https://github.com/owlfox/missing_semester/blob/master/ls_marco_polo.sh 
 3. https://github.com/owlfox/missing_semester/blob/master/until_success.sh
 4. `find . -name "*.html" -print0 | xargs -0 zip a.zip`
-5. `ls -ltrh`
+5. gfind -cmin -10
 
 # Reference
 [1] Missing sementer [shell](https://missing.csail.mit.edu/2020/course-shell/), [shell
